@@ -4,6 +4,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { GameEngine } from 'react-native-game-engine';
 import Matter from 'matter-js';
 import Ball from './Ball' 
+import Floor from './Floor' 
 import Physics from './Physics';
 
 
@@ -33,18 +34,18 @@ export default class App extends Component {
     let world = engine.world;
 
     let ball = Matter.Bodies.circle( 8000 / 25 / 2, 50, 50);
-    let ground = Matter.Bodies.rectangle(100, 380, 810, 60, { isStatic: true, angle: Math.PI * 0.20 });
+    let floor = Matter.Bodies.rectangle(100, 380, 810, 60, { isStatic: true, angle: Math.PI * 0.20 });
 
 
     world.gravity.y = 0.1;
 
-    Matter.World.add(world, [ball]);
+    Matter.World.add(world, [ball, floor]);
     Matter.Body.setAngularVelocity(ball, 1.19)
-
   
     return {
       physics: { engine: engine, world: world },
-      ball: { body: ball, size: [50, 50], color: 'red', renderer: Ball }
+      ball: { body: ball, size: [50, 50], color: 'red', renderer: Ball },
+      floor: { body: floor, size: [50, 50], color: 'red', renderer: Floor }
 
    }
    
