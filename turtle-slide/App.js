@@ -33,19 +33,20 @@ export default class App extends Component {
     let engine = Matter.Engine.create({ enableSleeping: false })
     let world = engine.world;
 
-    let ball = Matter.Bodies.circle( 8000 / 25 / 2, 50, 50);
-    let floor = Matter.Bodies.rectangle(100, 380, 810, 60, { isStatic: true, angle: Math.PI * 0.20 });
+    let ball = Matter.Bodies.circle( 1000, 25 , 50, 50);
+    let floor = Matter.Bodies.rectangle(100, 900, 10000, 600, { isStatic: true });
 
 
-    world.gravity.y = 0.1;
+    
 
     Matter.World.add(world, [ball, floor]);
-    Matter.Body.setAngularVelocity(ball, 1.19)
+    // Matter.Body.setVelocity(ball, 1)
+    // Matter.world.setBounds(0, 0, 1800, 1800, 15)
   
     return {
       physics: { engine: engine, world: world },
       ball: { body: ball, size: [50, 50], color: 'red', renderer: Ball },
-      floor: { body: floor, size: [50, 50], color: 'red', renderer: Floor }
+      floor: { body: floor, size: [10000, 600],isStatic: true, color: 'blue', renderer: Floor }
 
    }
    
