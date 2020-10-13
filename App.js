@@ -51,7 +51,7 @@ export default class App extends Component {
       physics: { engine: engine, world: world },
       ball: { body: ball, size: [50, 50], color: 'red', renderer: Ball },
       floor: { body: floor, size: [10000, 600],isStatic: true, color: 'blue', renderer: Floor },
-      slope: { body: slope, size: [200, 55, 0.8], isStatic: true, color: 'green', renderer: Slope }
+      slope: { body: slope, size: [200, 55, 45, 0.8], isStatic: true, color: 'green', renderer: Slope }
 
    }
    
