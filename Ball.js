@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Image } from "react-native";
+import Player from './3_player';
+import Images from './assets/turtle1.png';
 
 export default class Ball extends Component {
     render() {
@@ -8,16 +10,27 @@ export default class Ball extends Component {
         const x = this.props.body.position.x - width;
         const y = this.props.body.position.y - height;
 
+        let image = Images
         return (
-            <View
+            <Image
                 style={{
                     position: "absolute",
                     left: x,
                     top: y,
                     width: width,
                     height: height,
-                    backgroundColor: this.props.color
-                }} />
+                }}
+                resizeMode="stretch"
+                source={image} />
+            // <View
+            //     style={{
+            //         position: "absolute",
+            //         left: x,
+            //         top: y,
+            //         width: width,
+            //         height: height,
+            //         backgroundColor: this.props.color,
+            //     }} />
     );
   }
 }

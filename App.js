@@ -7,7 +7,10 @@ import Ball from './Ball'
 import Floor from './Floor' 
 import Physics from './Physics';
 import Slope from './Slope';
-
+import Turtle from './Turtle';
+import Tile from './1_tile';
+import Sprite from './2_sprite';
+import Player from './3_player';
 
 export default class App extends Component {
 
@@ -33,10 +36,11 @@ export default class App extends Component {
 
     let engine = Matter.Engine.create({ enableSleeping: false })
     let world = engine.world;
-
-    let ball = Matter.Bodies.circle( 500, 850, 50, 50);
+    let ball = Matter.Bodies.circle(500, 850, 50, 50);
+    // let turtle = Matter.Bodies.circle(400, 850, 50, 50);
+  
     let floor = Matter.Bodies.rectangle(100, 900, 10000, 600, { isStatic: true });
-    let slope = Matter.Bodies.trapezoid(900, 550, 200, 55, 5, {isStatic: true});
+    let slope = Matter.Bodies.trapezoid(100, 550, 200, 55, 5, {isStatic: true});
 
     
 
@@ -49,9 +53,10 @@ export default class App extends Component {
   
     return {
       physics: { engine: engine, world: world },
-      ball: { body: ball, size: [50, 50], color: 'red', renderer: Ball },
+      ball: { body: ball, size: [48, 40], color: 'red', renderer: Ball },
       floor: { body: floor, size: [10000, 600],isStatic: true, color: 'blue', renderer: Floor },
-      slope: { body: slope, size: [200, 55, 0.8], isStatic: true, color: 'green', renderer: Slope }
+      slope: { body: slope, size: [200, 55, 0.8], isStatic: true, color: 'green', renderer: Slope },
+      // turtle: {body: turtle, size: [50, 50], renderer: Turtle}
 
    }
    
@@ -70,6 +75,8 @@ export default class App extends Component {
       entities={this.entities} />
 
       <Text>Hello its me</Text>
+        {/* <Player />
+        <Turtle /> */}
       <StatusBar style="auto" />
     </View>
   );
