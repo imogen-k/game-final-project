@@ -3,7 +3,9 @@ import Matter from "matter-js";
 const Physics = (entities, { touches, time }) => {
     let engine = entities.physics.engine;
     let ball = entities.ball.body;
-    engine.world.gravity.y = 1;
+    let floor = entities.floor.body;
+
+    engine.world.gravity.y = 10;
     Matter.Body.setVelocity(ball, {x: 5, y: 0} )
     
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View } from "react-native";
+import ball from './ball.png'
 
 export default class Ball extends Component {
     render() {
@@ -17,7 +18,10 @@ export default class Ball extends Component {
                     width: width,
                     height: height,
                     backgroundColor: this.props.color
-                }} />
+                   
+                }} 
+                 />
+            
     );
   }
 }
