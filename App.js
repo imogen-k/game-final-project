@@ -11,6 +11,7 @@ import Turtle from './Turtle';
 import Tile from './1_tile';
 import Sprite from './2_sprite';
 import Player from './3_player';
+import { render } from 'react-dom';
 
 export default class App extends Component {
 
@@ -34,16 +35,48 @@ export default class App extends Component {
 
   setupWorld = () => {
 
-    let engine = Matter.Engine.create({ enableSleeping: false })
-    let world = engine.world;
+    let Engine = Matter.Engine
+    // let engine = Engine.create( { enableSleeping: false})
+    
+   
     let ball = Matter.Bodies.circle(500, 850, 50, 50);
-    // let turtle = Matter.Bodies.circle(400, 850, 50, 50);
+    let Bounds = Matter.Bounds
+    let Render = Matter.Render
+    let Constraint = Matter.Constraint
+    let engine = Engine.create(document.body, {
+      enableSleeping: false, // def = false
+      render: {
+        options: {
+          showAngleIndicator : true,
+          wireframes         : true,
+          showVelocity       : true,
+          showCollisions     : true,
+          enableSleeping     : true,
+          hasBounds          : true
+        }
+      }
+    });
+    let world = engine.world;
+   
+
+  
+
+  
   
     let floor = Matter.Bodies.rectangle(100, 900, 10000, 600, { isStatic: true });
     let slope = Matter.Bodies.trapezoid(100, 550, 200, 55, 5, {isStatic: true});
 
-    
+    let initialEngineBoundsMaxX = engine.render.bounds.max.x
+    let initialEngineBoundsMaxY = engine.render.bounds.max.y
+     let centerX = - 200
+    let centerY = - 200
 
+    
+    engine.render.bounds.min.x = centerX + ball.bounds.min.x
+    engine.render.bounds.max.x = centerX + ball.bounds.min.x + initialEngineBoundsMaxX
+    
+    engine.render.bounds.min.y = centerY + ball.bounds.min.y
+    engine.render.bounds.max.y = centerY + ball.bounds.min.y + initialEngineBoundsMaxY
 
     
 
@@ -56,9 +89,9 @@ export default class App extends Component {
       ball: { body: ball, size: [48, 40], color: 'red', renderer: Ball },
       floor: { body: floor, size: [10000, 600],isStatic: true, color: 'blue', renderer: Floor },
       slope: { body: slope, size: [200, 55, 0.8], isStatic: true, color: 'green', renderer: Slope },
-      // turtle: {body: turtle, size: [50, 50], renderer: Turtle}
+      
 
-   }
+   } 
    
     
   }
