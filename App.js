@@ -39,7 +39,7 @@ export default class App extends Component {
     // let engine = Engine.create( { enableSleeping: false})
     
    
-    let ball = Matter.Bodies.circle(500, 850, 50, 50);
+    let ball = Matter.Bodies.circle(500, 850, 0.2, 50);
     let Bounds = Matter.Bounds
     let Render = Matter.Render
     let Constraint = Matter.Constraint
