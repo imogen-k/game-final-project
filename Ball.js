@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Image } from "react-native";
 import Player from './3_player';
-import Images from './assets/turtle1.png';
+import Images from './assets/img/turtle1.png';
 
 export default class Ball extends Component {
     render() {

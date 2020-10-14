@@ -10,8 +10,8 @@ const Physics = (entities, { touches, time }) => {
     
 
 
-    touches.filter(t => t.type === "press").forEach(t => { Matter.Body.applyForce( ball, ball.position, {x:0.00, y: -0.10})
-  });
+  //   touches.filter(t => t.type === "press").forEach(t => { Matter.Body.applyForce( ball, ball.position, {x:0.00, y: -0.10})
+  // });
 
     Matter.Engine.update(engine, time.delta);
 

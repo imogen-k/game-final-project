@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { View } from "react-native";
 import Tile from "./1_tile";
 import Sprite from "./2_sprite";
-import sideAnimation from "./assets/side.png";
+import sideAnimation from "./assets/img/side.png";
 
 const Container = styled.div`
   position: relative;
